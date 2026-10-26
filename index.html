@@ -1,87 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#73cdf5">
-  <title>Chinh phục tri thức – Ý thức và vật chất</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d32">
+  <meta name="description" content="Trò chơi ôn tập Triết học Mác – Lênin: quan niệm của chủ nghĩa duy vật biện chứng về ý thức.">
+  <title>Chinh phục tri thức | Ý thức và vật chất</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="sky-decor sun" aria-hidden="true">☀️</div>
-  <div class="cloud cloud-one" aria-hidden="true"></div>
-  <div class="cloud cloud-two" aria-hidden="true"></div>
-  <div class="hills" aria-hidden="true"><div class="hill hill-back"></div><div class="hill hill-front"></div></div>
-  <div class="fence" aria-hidden="true"></div>
-
   <header class="topbar">
-    <a class="brand" href="#" aria-label="Trang chủ">
-      <span class="brand-icon">⌂</span>
-      <span>Chinh phục tri thức</span>
-    </a>
-    <div class="top-stats">
-      <span class="stat-pill">⭐ <b id="topScore">0</b></span>
-      <button class="sound-button" id="soundToggle" aria-label="Bật tắt âm thanh" title="Bật/tắt âm thanh">🔊</button>
-    </div>
+    <a class="brand" href="#home" aria-label="Chinh phục tri thức - trang chủ"><span class="brand-mark">CT</span><span><b>CHINH PHỤC TRI THỨC</b><small>HỌC TẬP QUA TRÒ CHƠI</small></span></a>
+    <div class="top-actions"><div class="score-chip" aria-label="Điểm hiện tại"><span>★</span><b id="topScore">0</b><small>điểm</small></div><button class="icon-button" id="soundToggle" type="button" aria-label="Tắt âm thanh" title="Bật/tắt âm thanh">♫</button></div>
   </header>
-
-  <main class="game-card">
-    <section id="homeScreen" class="screen home-screen">
-      <span class="lesson-tag">CHỦ ĐỀ 2.2 · TRIẾT HỌC MÁC – LÊNIN</span>
-      <h1><span>Chinh phục tri thức</span><strong>Ý thức và vật chất</strong></h1>
-      <p class="intro">Sẵn sàng bước vào hành trình khám phá quan niệm của chủ nghĩa duy vật biện chứng về ý thức chưa?</p>
-      <div class="mascots" aria-hidden="true">
-        <span class="mascot brain">🧠</span><span class="mascot book">📚</span><span class="mascot bulb">💡</span><span class="mascot robot">🤖</span><span class="mascot star">⭐</span>
-      </div>
-      <div class="mission-box">
-        <div>🌱 <b>Nhiệm vụ:</b> Hoàn thành 5 câu hỏi</div>
-        <div>⭐ <b>Phần thưởng:</b> 10 điểm cho mỗi câu đúng</div>
-        <div>🎯 <b>Mục tiêu:</b> Đạt điểm cao nhất có thể!</div>
-      </div>
-      <button class="primary-button" id="startButton">Bắt đầu chơi <span>➜</span></button>
-      <p class="solo-note">🎮 Chế độ một người chơi · Không cần đăng nhập</p>
-      <details class="credits">
-        <summary>Thông tin nhóm thực hiện</summary>
-        <p><b>Nhóm trưởng:</b> Nguyễn Thế Mạnh</p>
-        <p><b>Thành viên:</b> Vinh Phung, Trần Văn A, Lê Thị B, Phạm Văn C</p>
-      </details>
+  <main class="shell">
+    <section id="homeScreen" class="panel home-screen">
+      <div class="eyebrow"><span class="eyebrow-dot"></span> CHỦ ĐỀ 2.2 · TRIẾT HỌC MÁC – LÊNIN</div>
+      <div class="hero-grid"><div class="hero-copy"><p class="kicker">SẴN SÀNG THỬ THÁCH?</p><h1>Ý thức <em>&</em><br>vật chất<span class="period">.</span></h1><p class="intro">Khám phá quan niệm của chủ nghĩa duy vật biện chứng về ý thức qua 15 câu hỏi trắc nghiệm. Đọc kỹ, chọn đáp án và xem giải thích sau mỗi câu.</p>
+        <div class="hero-stats"><div><strong>15</strong><span>CÂU HỎI</span></div><div><strong>150</strong><span>ĐIỂM TỐI ĐA</span></div><div><strong>∞</strong><span>CHƠI LẠI</span></div></div>
+        <button class="primary-button" id="startButton" type="button">Bắt đầu hành trình <span aria-hidden="true">↗</span></button>
+      </div><div class="hero-art" aria-hidden="true"><div class="art-ring ring-one"></div><div class="art-ring ring-two"></div><div class="art-core">✳</div><div class="art-label label-top">NHẬN THỨC</div><div class="art-label label-bottom">THỰC TIỄN</div><span class="art-star star-a">✦</span><span class="art-star star-b">✧</span><span class="art-number">02</span></div></div>
+      <div class="mission-strip"><span class="mission-icon">✦</span><div><b>Nhiệm vụ của bạn</b><p>Mỗi câu đúng được 10 điểm. Câu trả lời đi kèm giải thích để giúp bạn ghi nhớ kiến thức.</p></div><span class="strip-arrow">15 <small>CÂU</small></span></div>
+      <details class="credits"><summary>Thông tin nhóm thực hiện <span>＋</span></summary><div class="member-grid"><p><b>01</b> Phùng Thế Vinh</p><p><b>02</b> Mai Tiến Minh</p><p><b>03</b> Hà Thiện Nhân</p><p><b>04</b> Trần Anh Tài</p></div></details>
     </section>
 
-    <section id="quizScreen" class="screen quiz-screen hidden">
-      <div class="quiz-topline">
-        <span class="level-tag" id="questionTag">THỬ THÁCH 1/5</span>
-        <span class="score-label">⭐ <b id="scoreDisplay">0</b> điểm</span>
-      </div>
-      <div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
-      <div class="question-meta"><span>📘 Chủ đề 2.2</span><span id="questionOwner">Phụ trách: Nguyễn Thế Mạnh</span></div>
-      <h2 id="questionText">Câu hỏi sẽ xuất hiện ở đây</h2>
+    <section id="quizScreen" class="panel quiz-screen hidden" aria-live="polite">
+      <div class="quiz-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span> ĐANG THỬ THÁCH</div><h2>Kiểm tra kiến thức<span class="period">.</span></h2></div><div class="question-count"><b id="questionNumber">01</b><span>/ <span id="questionTotal">15</span></span></div></div>
+      <div class="progress-meta"><span id="questionTag">CÂU HỎI 1/15</span><span><b id="scoreDisplay">0</b> / 150 điểm</span></div><div class="progress-track"><div id="progressBar" class="progress-fill"></div></div>
+      <div class="question-meta"><span class="meta-badge">TRIẾT HỌC MÁC – LÊNIN</span><span id="questionOwner">Phụ trách: Phùng Thế Vinh</span></div>
+      <h3 id="questionText" class="question-text">Câu hỏi sẽ xuất hiện ở đây</h3>
       <div id="answerList" class="answer-list"></div>
       <div id="feedback" class="feedback hidden" role="status" aria-live="polite"></div>
-      <div class="quiz-actions">
-        <button class="secondary-button" id="hintButton">💡 Gợi ý</button>
-        <button class="primary-button next-button" id="nextButton" disabled>Tiếp tục ➜</button>
-      </div>
       <div id="hintBox" class="hint-box hidden"></div>
+      <div class="quiz-actions"><button class="secondary-button" id="hintButton" type="button">Gợi ý <span>↗</span></button><button class="primary-button next-button" id="nextButton" type="button" disabled>Tiếp tục <span>→</span></button></div>
+      <p class="keyboard-note">CHỌN MỘT ĐÁP ÁN · SAU ĐÓ NHẤN TIẾP TỤC</p>
     </section>
 
-    <section id="resultScreen" class="screen result-screen hidden">
-      <div class="result-icon" id="resultIcon">🏆</div>
-      <span class="lesson-tag">HOÀN THÀNH HÀNH TRÌNH</span>
-      <h2 id="resultTitle">Tuyệt vời!</h2>
-      <p id="resultMessage" class="intro"></p>
-      <div class="result-score"><span>Điểm của bạn</span><strong><b id="finalScore">0</b><small>/50</small></strong></div>
-      <div class="result-stats">
-        <div><strong id="correctCount">0</strong><span>Câu đúng</span></div>
-        <div><strong id="wrongCount">0</strong><span>Câu chưa đúng</span></div>
-        <div><strong id="percentScore">0%</strong><span>Kết quả</span></div>
-      </div>
+    <section id="resultScreen" class="panel result-screen hidden">
+      <div class="result-head"><div class="result-symbol" id="resultIcon">✦</div><div><div class="eyebrow"><span class="eyebrow-dot"></span> HÀNH TRÌNH HOÀN TẤT</div><h2 id="resultTitle">Tuyệt vời!</h2><p id="resultMessage" class="intro"></p></div></div>
+      <div class="result-score"><div><span>TỔNG ĐIỂM</span><strong><b id="finalScore">0</b><small>/150</small></strong></div><div class="result-percent"><b id="percentScore">0%</b><span>tỷ lệ đúng</span></div></div>
+      <div class="result-stats"><div><strong id="correctCount">0</strong><span>CÂU ĐÚNG</span></div><div><strong id="wrongCount">0</strong><span>CHƯA ĐÚNG</span></div><div><strong>15</strong><span>TỔNG CÂU</span></div></div>
       <div id="reviewList" class="review-list"></div>
-      <button class="primary-button" id="restartButton">Chơi lại từ đầu ↻</button>
-      <p class="solo-note">Cứ luyện tập từng chút một, kiến thức sẽ ngày càng vững chắc! 🌱</p>
+      <button class="primary-button restart-button" id="restartButton" type="button">Chơi lại từ đầu <span>↻</span></button>
     </section>
   </main>
-
-  <footer class="footer">CHINH PHỤC TRI THỨC <span>•</span> HỌC TẬP QUA TRÒ CHƠI</footer>
-  <script src="script.js"></script>
+  <footer class="footer"><span>CHINH PHỤC TRI THỨC</span><span>•</span><span>HỌC TẬP · TƯ DUY · THỰC TIỄN</span></footer>
 </body>
 </html>

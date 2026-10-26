@@ -1,23 +1,21 @@
 # Chinh phục tri thức – Ý thức và vật chất
 
-Website quiz giáo dục dạng trò chơi, chế độ **một người chơi**, chạy hoàn toàn ở trình duyệt và phù hợp triển khai bằng GitHub Pages.
+Website trắc nghiệm tĩnh dùng HTML, CSS và JavaScript thuần, có thể triển khai trực tiếp bằng GitHub Pages. Không cần cài thư viện hay backend.
 
-## Chạy thử trên máy
-Mở `index.html` bằng trình duyệt. Không cần cài thư viện hay chạy server.
+## Các file
+- `index.html`: cấu trúc giao diện và các màn hình.
+- `style.css`: giao diện responsive cho máy tính và điện thoại.
+- `script.js`: ngân hàng 15 câu hỏi, chấm điểm, gợi ý, giải thích và phần ôn tập.
 
 ## Đưa lên GitHub Pages
-1. Tạo một repository GitHub mới.
-2. Tải lên 3 tệp `index.html`, `style.css`, `script.js` (có thể tải cả README).
-3. Vào **Settings → Pages**.
-4. Ở **Build and deployment**, chọn **Deploy from a branch**.
-5. Chọn branch `main`, folder `/(root)`, bấm **Save**.
-6. Đợi GitHub Pages triển khai rồi mở URL mà GitHub cung cấp.
+1. Giải nén ZIP.
+2. Tải lên **cả ba file** `index.html`, `style.css`, `script.js` vào thư mục gốc repository (cùng cấp).
+3. Chọn commit changes.
+4. Vào **Settings → Pages**, chọn nhánh `main` và thư mục `/ (root)` nếu chưa cấu hình.
+5. Mở website và nhấn `Ctrl + F5` để tải lại không dùng cache.
 
-## Tùy chỉnh
-- Sửa câu hỏi, đáp án, gợi ý và giải thích trong mảng `questions` ở `script.js`.
-- Sửa màu sắc, kích thước và bố cục trong `style.css`.
-- Danh sách nhóm được thu gọn ở trang chủ trong phần “Thông tin nhóm thực hiện”.
-- Điểm hiện chỉ lưu trong lượt chơi hiện tại, không cần backend hay cơ sở dữ liệu.
-
-## Lưu ý
-Google Fonts cần kết nối Internet để tải font Nunito; nếu không có mạng, website vẫn dùng font dự phòng.
+## Kiểm tra nhanh
+- `script.js` có 15 câu hỏi.
+- Điểm tối đa tự tính theo số câu: 150 điểm với 15 câu.
+- Không dùng `slice(0, 5)` hay giới hạn 5 câu.
+- Nếu vẫn hiện bản cũ, kiểm tra URL Pages/repository đúng và chờ GitHub Pages hoàn tất deployment.
