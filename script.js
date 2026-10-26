@@ -195,7 +195,6 @@ const questions = [
     hint: "Kết hợp hai yêu cầu: không duy ý chí và không thụ động trước hoàn cảnh."
   }
 ];
-
 const homeScreen = document.getElementById("homeScreen");
 const quizScreen = document.getElementById("quizScreen");
 const resultScreen = document.getElementById("resultScreen");
