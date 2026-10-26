@@ -1,4 +1,3 @@
-
 const questions = [
   {
     owner: "Phùng Thế Vinh",
@@ -58,7 +57,7 @@ const questions = [
     options: [
       "Vì máy tính chưa đủ dung lượng bộ nhớ.",
       "Vì máy tính không có nguồn điện ổn định.",
-      "Vì xử lý thông tin không tự nó chứng minh có ý thức người với nguồn gốc xã hội và hoạt động thực tiễn.",
+      "Vì máy móc là hệ thống kỹ thuật do con người tạo ra; xử lý thông tin không tự nó chứng minh có ý thức người gắn với đời sống xã hội và thực tiễn.",
       "Vì máy tính không thể xử lý ngôn ngữ tự nhiên."
     ],
     answer: 2,
@@ -77,19 +76,6 @@ const questions = [
     answer: 2,
     explanation: "Vật chất có trước và quyết định ý thức. Ý thức có thể tác động trở lại hiện thực vật chất thông qua hoạt động thực tiễn của con người.",
     hint: "Hãy nhớ cả chiều quyết định và chiều tác động trở lại."
-  },
-  {
-    owner: "Hà Thiện Nhân",
-    text: "Ý thức có nguồn gốc xã hội chủ yếu từ những yếu tố nào?",
-    options: [
-      "Lao động và ngôn ngữ.",
-      "Thời tiết và khí hậu.",
-      "Bản năng sinh tồn và phản xạ.",
-      "Di truyền và sự phát triển cơ bắp."
-    ],
-    answer: 0,
-    explanation: "Lao động và ngôn ngữ là hai yếu tố quan trọng của nguồn gốc xã hội của ý thức, gắn với quá trình con người hợp tác và giao tiếp.",
-    hint: "Một yếu tố gắn với hoạt động cải biến tự nhiên, yếu tố còn lại giúp giao tiếp."
   },
   {
     owner: "Trần Anh Tài",
@@ -233,7 +219,8 @@ function playTone(frequency = 660, duration = 0.09) {
   if (!soundOn) return;
 
   try {
-    audioContext = audioContext ||
+    audioContext =
+      audioContext ||
       new (window.AudioContext || window.webkitAudioContext)();
 
     const oscillator = audioContext.createOscillator();
@@ -246,7 +233,6 @@ function playTone(frequency = 660, duration = 0.09) {
     gain.gain.value = 0.045;
 
     oscillator.start();
-
     gain.gain.exponentialRampToValueAtTime(
       0.001,
       audioContext.currentTime + duration
@@ -319,7 +305,9 @@ function renderQuestion() {
 
     button.querySelector("span:last-child").textContent = option;
 
-    button.addEventListener("click", () => chooseAnswer(index));
+    button.addEventListener("click", () => {
+      chooseAnswer(index);
+    });
 
     answerList.appendChild(button);
   });
@@ -362,9 +350,7 @@ function chooseAnswer(index) {
   feedback.className = `feedback ${isCorrect ? "good" : "bad"}`;
 
   feedback.innerHTML =
-    `<strong>${
-      isCorrect ? "🎉 Chính xác! +10 điểm" : "🌱 Chưa chính xác!"
-    }</strong><br>`;
+    `<strong>${isCorrect ? "🎉 Chính xác! +10 điểm" : "🌱 Chưa chính xác!"}</strong><br>`;
 
   const explanation = document.createElement("span");
   explanation.textContent = q.explanation;
@@ -394,6 +380,7 @@ function showResults() {
 
   document.getElementById("finalScore").textContent = score;
   document.getElementById("correctCount").textContent = correct;
+
   document.getElementById("wrongCount").textContent =
     questions.length - correct;
 
@@ -410,12 +397,12 @@ function showResults() {
   if (score >= 120) {
     title = "Xuất sắc!";
     message =
-      "Bạn đã nắm rất vững kiến thức về ý thức và vật chất. Tiếp tục phát huy nhé!";
+      "Bạn đã nắm khá vững kiến thức về ý thức và vật chất. Tiếp tục phát huy nhé!";
     icon = "🏆";
   } else if (score >= 90) {
     title = "Làm tốt lắm!";
     message =
-      "Bạn có nền tảng kiến thức tốt. Ôn lại những câu sai để đạt điểm tối đa!";
+      "Bạn đã đi được một chặng đường tốt. Ôn lại vài khái niệm để chinh phục điểm tối đa!";
     icon = "🌟";
   } else if (score >= 60) {
     title = "Khá tốt!";
@@ -445,8 +432,7 @@ function showResults() {
     const answer = document.createElement("div");
 
     answer.textContent =
-      `Đáp án đúng: ${"ABCD"[item.answer]}. ` +
-      `${questions[i].options[item.answer]}`;
+      `Đáp án đúng: ${"ABCD"[item.answer]}. ${questions[i].options[item.answer]}`;
 
     const explanation = document.createElement("div");
     explanation.textContent = item.explanation;
@@ -476,8 +462,7 @@ nextButton.addEventListener("click", () => {
 
 hintButton.addEventListener("click", showHint);
 
-document.getElementById("restartButton")
-  .addEventListener("click", startGame);
+document.getElementById("restartButton").addEventListener("click", startGame);
 
 soundToggle.addEventListener("click", () => {
   soundOn = !soundOn;
@@ -489,5 +474,7 @@ soundToggle.addEventListener("click", () => {
     soundOn ? "Tắt âm thanh" : "Bật âm thanh"
   );
 
-  if (soundOn) playTone(660);
+  if (soundOn) {
+    playTone(660);
+  }
 });
