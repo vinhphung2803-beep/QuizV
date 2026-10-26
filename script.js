@@ -63,8 +63,8 @@ const questions = [
     answer: 2,
     explanation: "Dung lượng bộ nhớ, điện năng hay ngôn ngữ lập trình không quyết định vấn đề này. Cần phân biệt khả năng xử lý thông tin của hệ thống kỹ thuật với quan niệm triết học về ý thức người gắn với bộ óc, đời sống xã hội và thực tiễn.",
     hint: "Hãy tập trung vào sự khác nhau giữa xử lý thông tin bằng kỹ thuật và ý thức người trong đời sống xã hội."
-  }
-   {
+  },
+  {
     owner: "Mai Tiến Minh",
     text: "Theo chủ nghĩa duy vật biện chứng, mối quan hệ giữa vật chất và ý thức được hiểu như thế nào?",
     options: [
@@ -215,83 +215,212 @@ let soundOn = true;
 let history = [];
 let audioContext;
 
-function playTone(frequency = 660, duration = 0.09) {
+function playTone(frequency = 660, duration = 0.09, type = "sine", volume = 0.045) {
   if (!soundOn) return;
+
   try {
-    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+    audioContext = audioContext || new (
+      window.AudioContext || window.webkitAudioContext
+    )();
+
+    if (audioContext.state === "suspended") {
+      audioContext.resume();
+    }
+
     const oscillator = audioContext.createOscillator();
     const gain = audioContext.createGain();
+
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
+
+    gain.gain.setValueAtTime(volume, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      audioContext.currentTime + duration
+    );
+
     oscillator.connect(gain);
     gain.connect(audioContext.destination);
-    oscillator.frequency.value = frequency;
-    gain.gain.value = 0.045;
+
     oscillator.start();
-    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
     oscillator.stop(audioContext.currentTime + duration);
-  } catch (_) {}
+  } catch (error) {
+    console.warn("Không thể phát âm thanh:", error);
+  }
+}
+
+function playSequence(notes) {
+  if (!soundOn) return;
+
+  notes.forEach((note, index) => {
+    setTimeout(() => {
+      playTone(note.frequency, note.duration || 0.12, "sine", 0.04);
+    }, index * (note.delay || 150));
+  });
+}
+
+function playStartSound() {
+  playSequence([
+    { frequency: 440 },
+    { frequency: 554 },
+    { frequency: 659 }
+  ]);
+}
+
+function playCorrectSound() {
+  playSequence([
+    { frequency: 523 },
+    { frequency: 659 },
+    { frequency: 784 }
+  ]);
+}
+
+function playWrongSound() {
+  playSequence([
+    { frequency: 330, duration: 0.14 },
+    { frequency: 247, duration: 0.18 }
+  ]);
+}
+
+function playHintSound() {
+  playTone(700, 0.12);
+}
+
+function playFinishSound() {
+  playSequence([
+    { frequency: 523, delay: 170 },
+    { frequency: 659, delay: 170 },
+    { frequency: 784, delay: 170 },
+    { frequency: 1046, duration: 0.35, delay: 200 }
+  ]);
 }
 
 function startGame() {
-  current = 0; score = 0; correct = 0; history = [];
+  current = 0;
+  score = 0;
+  correct = 0;
+  history = [];
+
   homeScreen.classList.add("hidden");
   resultScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
+
+  playStartSound();
   renderQuestion();
-  window.scrollTo({top: 0, behavior: "smooth"});
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function renderQuestion() {
   answered = false;
+
   const q = questions[current];
-  document.getElementById("questionTag").textContent = `THỬ THÁCH ${current + 1}/${questions.length}`;
+
+  document.getElementById("questionTag").textContent =
+    `THỬ THÁCH ${current + 1}/${questions.length}`;
+
   document.getElementById("scoreDisplay").textContent = score;
   document.getElementById("topScore").textContent = score;
-  document.getElementById("progressBar").style.width = `${(current / questions.length) * 100}%`;
-  document.getElementById("questionOwner").textContent = `Phụ trách: ${q.owner}`;
+
+  document.getElementById("progressBar").style.width =
+    `${(current / questions.length) * 100}%`;
+
+  document.getElementById("questionOwner").textContent =
+    `Phụ trách: ${q.owner}`;
+
   document.getElementById("questionText").textContent = q.text;
+
   answerList.innerHTML = "";
   feedback.className = "feedback hidden";
   feedback.textContent = "";
+
   hintBox.classList.add("hidden");
   hintBox.textContent = "";
+
   hintButton.disabled = false;
   nextButton.disabled = true;
-  nextButton.textContent = current === questions.length - 1 ? "Xem kết quả 🏆" : "Tiếp tục ➜";
+
+  nextButton.textContent =
+    current === questions.length - 1
+      ? "Xem kết quả 🏆"
+      : "Tiếp tục ➜";
 
   q.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.className = "answer-option";
-    button.innerHTML = `<span class="answer-letter">${"ABCD"[index]}</span><span></span>`;
-    button.querySelector("span:last-child").textContent = option;
-    button.addEventListener("click", () => chooseAnswer(index));
+
+    const letter = document.createElement("span");
+    letter.className = "answer-letter";
+    letter.textContent = "ABCD"[index];
+
+    const text = document.createElement("span");
+    text.textContent = option;
+
+    button.append(letter, text);
+
+    button.addEventListener("click", () => {
+      playTone(500, 0.06);
+      chooseAnswer(index);
+    });
+
     answerList.appendChild(button);
   });
 }
 
 function chooseAnswer(index) {
   if (answered) return;
+
   answered = true;
+
   const q = questions[current];
   const isCorrect = index === q.answer;
-  if (isCorrect) { score += 10; correct++; playTone(790, .13); }
-  else playTone(240, .18);
 
-  history.push({question: q.text, selected: index, answer: q.answer, isCorrect, explanation: q.explanation});
+  if (isCorrect) {
+    score += 10;
+    correct++;
+    playCorrectSound();
+  } else {
+    playWrongSound();
+  }
+
+  history.push({
+    question: q.text,
+    selected: index,
+    answer: q.answer,
+    isCorrect,
+    explanation: q.explanation
+  });
+
   [...answerList.children].forEach((button, i) => {
     button.disabled = true;
-    if (i === q.answer) button.classList.add("correct");
-    else if (i === index) button.classList.add("wrong");
+
+    if (i === q.answer) {
+      button.classList.add("correct");
+    } else if (i === index) {
+      button.classList.add("wrong");
+    }
   });
 
   feedback.className = `feedback ${isCorrect ? "good" : "bad"}`;
-  feedback.innerHTML = `<strong>${isCorrect ? "🎉 Chính xác! +10 điểm" : "🌱 Chưa chính xác!"}</strong><br>`;
+  feedback.innerHTML = "";
+
+  const heading = document.createElement("strong");
+  heading.textContent = isCorrect
+    ? "🎉 Chính xác! +10 điểm"
+    : "🌱 Chưa chính xác!";
+
   const explanation = document.createElement("span");
   explanation.textContent = q.explanation;
-  feedback.appendChild(explanation);
+
+  feedback.append(heading, document.createElement("br"), explanation);
   feedback.classList.remove("hidden");
+
   document.getElementById("scoreDisplay").textContent = score;
   document.getElementById("topScore").textContent = score;
-  document.getElementById("progressBar").style.width = `${((current + 1) / questions.length) * 100}%`;
+
+  document.getElementById("progressBar").style.width =
+    `${((current + 1) / questions.length) * 100}%`;
+
   nextButton.disabled = false;
   hintButton.disabled = true;
 }
@@ -300,53 +429,102 @@ function showHint() {
   hintBox.textContent = `💡 Gợi ý: ${questions[current].hint}`;
   hintBox.classList.remove("hidden");
   hintButton.disabled = true;
+  playHintSound();
 }
 
 function showResults() {
   quizScreen.classList.add("hidden");
   resultScreen.classList.remove("hidden");
+
   document.getElementById("finalScore").textContent = score;
   document.getElementById("correctCount").textContent = correct;
-  document.getElementById("wrongCount").textContent = questions.length - correct;
-  document.getElementById("percentScore").textContent = `${Math.round(correct / questions.length * 100)}%`;
+  document.getElementById("wrongCount").textContent =
+    questions.length - correct;
+
+  document.getElementById("percentScore").textContent =
+    `${Math.round((correct / questions.length) * 100)}%`;
+
   document.getElementById("progressBar").style.width = "100%";
+
   let title = "Cố gắng thêm nhé!";
-  let message = "Đọc lại phần giải thích rồi thử sức lần nữa. Mỗi lượt chơi là một cơ hội học tốt hơn.";
+  let message =
+    "Đọc lại phần giải thích rồi thử sức lần nữa. Mỗi lượt chơi là một cơ hội học tốt hơn.";
   let icon = "🌱";
-  if (score >= 40) { title = "Xuất sắc!"; message = "Bạn đã nắm khá vững kiến thức về ý thức và vật chất. Tiếp tục phát huy nhé!"; icon = "🏆"; }
-  else if (score >= 30) { title = "Làm tốt lắm!"; message = "Bạn đã đi được một chặng đường tốt. Ôn lại vài khái niệm để chinh phục điểm tối đa!"; icon = "🌟"; }
+
+  if (score >= 120) {
+    title = "Xuất sắc!";
+    message =
+      "Bạn đã nắm rất vững kiến thức về ý thức và vật chất. Tuyệt vời!";
+    icon = "🏆";
+  } else if (score >= 80) {
+    title = "Làm tốt lắm!";
+    message =
+      "Bạn đã nắm được nhiều kiến thức. Ôn lại các câu sai để tiến bộ hơn nhé!";
+    icon = "🌟";
+  } else if (score >= 50) {
+    title = "Đang tiến bộ!";
+    message =
+      "Hãy xem lại phần giải thích và thử sức thêm lần nữa nhé!";
+    icon = "💪";
+  }
+
   document.getElementById("resultTitle").textContent = title;
   document.getElementById("resultMessage").textContent = message;
   document.getElementById("resultIcon").textContent = icon;
 
   const reviewList = document.getElementById("reviewList");
   reviewList.innerHTML = "<h3>📖 Ôn tập sau trò chơi</h3>";
+
   history.forEach((item, i) => {
     const row = document.createElement("div");
     row.className = `review-item ${item.isCorrect ? "good" : "bad"}`;
+
     const heading = document.createElement("b");
-    heading.textContent = `${item.isCorrect ? "✓" : "✗"} Câu ${i + 1}: ${item.question}`;
+    heading.textContent =
+      `${item.isCorrect ? "✓" : "✗"} Câu ${i + 1}: ${item.question}`;
+
     const answer = document.createElement("div");
-    answer.textContent = `Đáp án đúng: ${"ABCD"[item.answer]}. ${questions[i].options[item.answer]}`;
+    answer.textContent =
+      `Đáp án đúng: ${"ABCD"[item.answer]}. ${questions[i].options[item.answer]}`;
+
     const explanation = document.createElement("div");
     explanation.textContent = item.explanation;
+
     row.append(heading, answer, explanation);
     reviewList.appendChild(row);
   });
-  window.scrollTo({top: 0, behavior: "smooth"});
+
+  playFinishSound();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 startButton.addEventListener("click", startGame);
+
 nextButton.addEventListener("click", () => {
   if (!answered) return;
-  if (current < questions.length - 1) { current++; renderQuestion(); }
-  else showResults();
+
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
 });
+
 hintButton.addEventListener("click", showHint);
+
 document.getElementById("restartButton").addEventListener("click", startGame);
+
 soundToggle.addEventListener("click", () => {
   soundOn = !soundOn;
+
   soundToggle.textContent = soundOn ? "🔊" : "🔇";
-  soundToggle.setAttribute("aria-label", soundOn ? "Tắt âm thanh" : "Bật âm thanh");
-  if (soundOn) playTone(660);
+  soundToggle.setAttribute(
+    "aria-label",
+    soundOn ? "Tắt âm thanh" : "Bật âm thanh"
+  );
+
+  if (soundOn) {
+    playTone(660);
+  }
 });
