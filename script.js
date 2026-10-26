@@ -49,21 +49,164 @@ const questions = [
       "Tư duy trừu tượng và tư duy logic."
     ],
     answer: 1,
-    explanation: "Theo cách phân tích thường dùng trong giáo trình, kết cấu theo chiều ngang bao gồm tri thức, tình cảm và ý chí; các cách phân chia khác xét những mặt khác của đời sống ý thức.",
+    explanation: "Theo cách phân tích thường dùng trong giáo trình, kết cấu theo chiều ngang bao gồm tri thức, tình cảm và ý chí.",
     hint: "Nghĩ đến hiểu biết, cảm xúc và quyết tâm hành động."
   },
   {
     owner: "Phùng Thế Vinh",
-    text: "Theo quan điểm triết học Mác – Lênin trong nội dung bài học, vì sao không nên đồng nhất hoạt động của máy tính/AI với ý thức con người?",
+    text: "Vì sao không nên đồng nhất hoạt động của máy tính/AI với ý thức con người?",
     options: [
       "Vì máy tính chưa đủ dung lượng bộ nhớ.",
       "Vì máy tính không có nguồn điện ổn định.",
-      "Vì máy móc là hệ thống kỹ thuật do con người tạo ra; xử lý thông tin không tự nó chứng minh có ý thức người với nguồn gốc xã hội và hoạt động thực tiễn.",
-      "Vì máy tính chỉ dùng ngôn ngữ lập trình, không thể xử lý ngôn ngữ tự nhiên."
+      "Vì xử lý thông tin không tự nó chứng minh có ý thức người với nguồn gốc xã hội và hoạt động thực tiễn.",
+      "Vì máy tính không thể xử lý ngôn ngữ tự nhiên."
     ],
     answer: 2,
-    explanation: "Dung lượng bộ nhớ, điện năng hay ngôn ngữ lập trình không quyết định vấn đề này. Cần phân biệt khả năng xử lý thông tin của hệ thống kỹ thuật với quan niệm triết học về ý thức người gắn với bộ óc, đời sống xã hội và thực tiễn.",
-    hint: "Hãy tập trung vào sự khác nhau giữa xử lý thông tin bằng kỹ thuật và ý thức người trong đời sống xã hội."
+    explanation: "Cần phân biệt khả năng xử lý thông tin của hệ thống kỹ thuật với quan niệm triết học về ý thức con người gắn với bộ óc, đời sống xã hội và thực tiễn.",
+    hint: "Tập trung vào sự khác nhau giữa xử lý thông tin bằng kỹ thuật và ý thức người."
+  },
+  {
+    owner: "Mai Tiến Minh",
+    text: "Theo chủ nghĩa duy vật biện chứng, mối quan hệ giữa vật chất và ý thức được hiểu như thế nào?",
+    options: [
+      "Ý thức quyết định hoàn toàn vật chất.",
+      "Vật chất và ý thức không có quan hệ với nhau.",
+      "Vật chất quyết định ý thức; ý thức có tính độc lập tương đối và tác động trở lại vật chất thông qua thực tiễn.",
+      "Vật chất và ý thức là hai thứ hoàn toàn đồng nhất."
+    ],
+    answer: 2,
+    explanation: "Vật chất có trước và quyết định ý thức. Ý thức có thể tác động trở lại hiện thực vật chất thông qua hoạt động thực tiễn của con người.",
+    hint: "Hãy nhớ cả chiều quyết định và chiều tác động trở lại."
+  },
+  {
+    owner: "Hà Thiện Nhân",
+    text: "Ý thức có nguồn gốc xã hội chủ yếu từ những yếu tố nào?",
+    options: [
+      "Lao động và ngôn ngữ.",
+      "Thời tiết và khí hậu.",
+      "Bản năng sinh tồn và phản xạ.",
+      "Di truyền và sự phát triển cơ bắp."
+    ],
+    answer: 0,
+    explanation: "Lao động và ngôn ngữ là hai yếu tố quan trọng của nguồn gốc xã hội của ý thức, gắn với quá trình con người hợp tác và giao tiếp.",
+    hint: "Một yếu tố gắn với hoạt động cải biến tự nhiên, yếu tố còn lại giúp giao tiếp."
+  },
+  {
+    owner: "Trần Anh Tài",
+    text: "Đặc điểm nào thể hiện tính tích cực, sáng tạo của ý thức?",
+    options: [
+      "Ý thức sao chép hiện thực một cách máy móc, nguyên xi.",
+      "Ý thức phản ánh hiện thực, xử lý thông tin và định hướng hoạt động của con người.",
+      "Ý thức tồn tại hoàn toàn tách rời bộ óc.",
+      "Ý thức không chịu ảnh hưởng từ hoàn cảnh sống."
+    ],
+    answer: 1,
+    explanation: "Ý thức không chỉ phản ánh hiện thực mà còn có khả năng khái quát, dự báo, xây dựng mục tiêu và định hướng hành động.",
+    hint: "Ý thức không chỉ ghi nhận những gì đang có mà còn giúp con người lập kế hoạch."
+  },
+  {
+    owner: "Phùng Thế Vinh",
+    text: "Tri thức giữ vai trò gì trong kết cấu của ý thức?",
+    options: [
+      "Là yếu tố không liên quan đến ý thức.",
+      "Là yếu tố cơ bản, phương thức tồn tại của ý thức.",
+      "Là yếu tố chỉ xuất hiện khi con người ngủ.",
+      "Là yếu tố thay thế hoàn toàn tình cảm và ý chí."
+    ],
+    answer: 1,
+    explanation: "Tri thức là phương thức tồn tại của ý thức và là nhân tố cơ bản giúp con người nhận thức, định hướng hoạt động.",
+    hint: "Hãy nghĩ đến những hiểu biết mà con người sử dụng để nhận thức và hành động."
+  },
+  {
+    owner: "Mai Tiến Minh",
+    text: "Tình cảm có vai trò như thế nào đối với ý thức và hoạt động của con người?",
+    options: [
+      "Không ảnh hưởng đến hành vi.",
+      "Luôn thay thế hoàn toàn tri thức.",
+      "Thể hiện thái độ, rung động của con người và có thể ảnh hưởng đến động lực hành động.",
+      "Chỉ là phản ứng sinh học không liên quan đến đời sống xã hội."
+    ],
+    answer: 2,
+    explanation: "Tình cảm biểu hiện thái độ và sự rung động của con người trước hiện thực, đồng thời có thể tác động đến động lực và cách hành động.",
+    hint: "Tình cảm có thể khiến con người yêu thích, quan tâm hoặc quyết tâm thực hiện một việc."
+  },
+  {
+    owner: "Hà Thiện Nhân",
+    text: "Ý chí được hiểu phù hợp nhất là gì?",
+    options: [
+      "Khả năng ghi nhớ mọi thông tin.",
+      "Khả năng điều khiển thời tiết.",
+      "Sự quyết tâm và nỗ lực vượt khó để thực hiện mục đích.",
+      "Phản ứng tự động của cơ thể trước kích thích."
+    ],
+    answer: 2,
+    explanation: "Ý chí thể hiện năng lực huy động nỗ lực, vượt qua khó khăn và điều chỉnh hành vi để đạt mục đích đã xác định.",
+    hint: "Đó là yếu tố giúp một người kiên trì theo đuổi mục tiêu dù gặp trở ngại."
+  },
+  {
+    owner: "Trần Anh Tài",
+    text: "Điều kiện vật chất thay đổi có thể dẫn đến điều gì đối với ý thức?",
+    options: [
+      "Ý thức luôn giữ nguyên, bất kể hoàn cảnh.",
+      "Ý thức có thể thay đổi theo sự biến đổi của điều kiện vật chất.",
+      "Vật chất lập tức biến mất.",
+      "Ý thức không còn chịu tác động từ xã hội."
+    ],
+    answer: 1,
+    explanation: "Vì vật chất quyết định ý thức nên khi điều kiện vật chất và hoàn cảnh sống thay đổi, nhận thức và quan niệm của con người cũng có thể thay đổi.",
+    hint: "Hãy liên hệ việc môi trường sống, điều kiện học tập và lao động thay đổi."
+  },
+  {
+    owner: "Phùng Thế Vinh",
+    text: "Theo quan điểm duy vật biện chứng, muốn thay đổi nhận thức của con người một cách hiệu quả cần chú ý điều gì?",
+    options: [
+      "Chỉ cần yêu cầu mọi người suy nghĩ khác đi.",
+      "Bỏ qua hoàn cảnh sống và điều kiện thực tế.",
+      "Kết hợp nâng cao nhận thức với cải thiện điều kiện thực tế và tổ chức hoạt động thực tiễn.",
+      "Chỉ dựa vào cảm xúc nhất thời."
+    ],
+    answer: 2,
+    explanation: "Cần tôn trọng vai trò của điều kiện khách quan, đồng thời phát huy tính chủ động của con người thông qua giáo dục, tổ chức và thực tiễn.",
+    hint: "Không chỉ thay đổi suy nghĩ bằng lời nói; hãy quan tâm cả hoàn cảnh và hành động thực tế."
+  },
+  {
+    owner: "Mai Tiến Minh",
+    text: "Một sinh viên lập kế hoạch học tập, tìm phương pháp phù hợp và kiên trì thực hiện để đạt kết quả tốt. Ví dụ này thể hiện điều gì?",
+    options: [
+      "Ý thức có thể định hướng hoạt động thực tiễn của con người.",
+      "Ý thức tồn tại độc lập tuyệt đối với vật chất.",
+      "Vật chất không có vai trò quyết định.",
+      "Mọi hành động đều hoàn toàn do bản năng quyết định."
+    ],
+    answer: 0,
+    explanation: "Kế hoạch và mục tiêu trong ý thức có thể định hướng hành động thực tiễn. Hiệu quả cuối cùng vẫn phụ thuộc vào điều kiện khách quan và cách thực hiện.",
+    hint: "Suy nghĩ và kế hoạch đã ảnh hưởng như thế nào đến hành động của sinh viên?"
+  },
+  {
+    owner: "Hà Thiện Nhân",
+    text: "Quan điểm nào sau đây mắc sai lầm chủ quan, duy ý chí?",
+    options: [
+      "Đánh giá điều kiện thực tế trước khi lập kế hoạch.",
+      "Điều chỉnh mục tiêu khi hoàn cảnh thay đổi.",
+      "Cho rằng chỉ cần mong muốn mạnh mẽ là có thể đạt mọi mục tiêu, bất kể điều kiện khách quan.",
+      "Kết hợp kiến thức với thực hành."
+    ],
+    answer: 2,
+    explanation: "Chủ quan, duy ý chí là tuyệt đối hóa vai trò của ý thức và mong muốn, xem nhẹ hoặc phủ nhận điều kiện khách quan.",
+    hint: "Phương án sai là phương án cho rằng mong muốn có thể thay thế mọi điều kiện thực tế."
+  },
+  {
+    owner: "Trần Anh Tài",
+    text: "Bài học phương pháp luận quan trọng từ mối quan hệ giữa vật chất và ý thức là gì?",
+    options: [
+      "Chỉ cần dựa vào mong muốn cá nhân.",
+      "Tôn trọng khách quan, đồng thời phát huy tính năng động, sáng tạo của ý thức.",
+      "Không cần quan tâm đến điều kiện thực tế.",
+      "Chỉ hành động theo thói quen, không cần suy nghĩ."
+    ],
+    answer: 1,
+    explanation: "Cần xuất phát từ hiện thực khách quan, tôn trọng quy luật và điều kiện thực tế, đồng thời chủ động phát huy tri thức, ý chí và năng lực sáng tạo.",
+    hint: "Kết hợp hai yêu cầu: không duy ý chí và không thụ động trước hoàn cảnh."
   }
 ];
 
@@ -125,7 +268,10 @@ function startGame() {
 
   renderQuestion();
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 function renderQuestion() {
@@ -167,6 +313,7 @@ function renderQuestion() {
     const button = document.createElement("button");
 
     button.className = "answer-option";
+
     button.innerHTML =
       `<span class="answer-letter">${"ABCD"[index]}</span><span></span>`;
 
@@ -215,7 +362,9 @@ function chooseAnswer(index) {
   feedback.className = `feedback ${isCorrect ? "good" : "bad"}`;
 
   feedback.innerHTML =
-    `<strong>${isCorrect ? "🎉 Chính xác! +10 điểm" : "🌱 Chưa chính xác!"}</strong><br>`;
+    `<strong>${
+      isCorrect ? "🎉 Chính xác! +10 điểm" : "🌱 Chưa chính xác!"
+    }</strong><br>`;
 
   const explanation = document.createElement("span");
   explanation.textContent = q.explanation;
@@ -245,12 +394,11 @@ function showResults() {
 
   document.getElementById("finalScore").textContent = score;
   document.getElementById("correctCount").textContent = correct;
-
   document.getElementById("wrongCount").textContent =
     questions.length - correct;
 
   document.getElementById("percentScore").textContent =
-    `${Math.round(correct / questions.length * 100)}%`;
+    `${Math.round((correct / questions.length) * 100)}%`;
 
   document.getElementById("progressBar").style.width = "100%";
 
@@ -259,16 +407,21 @@ function showResults() {
     "Đọc lại phần giải thích rồi thử sức lần nữa. Mỗi lượt chơi là một cơ hội học tốt hơn.";
   let icon = "🌱";
 
-  if (score >= 40) {
+  if (score >= 120) {
     title = "Xuất sắc!";
     message =
-      "Bạn đã nắm khá vững kiến thức về ý thức và vật chất. Tiếp tục phát huy nhé!";
+      "Bạn đã nắm rất vững kiến thức về ý thức và vật chất. Tiếp tục phát huy nhé!";
     icon = "🏆";
-  } else if (score >= 30) {
+  } else if (score >= 90) {
     title = "Làm tốt lắm!";
     message =
-      "Bạn đã đi được một chặng đường tốt. Ôn lại vài khái niệm để chinh phục điểm tối đa!";
+      "Bạn có nền tảng kiến thức tốt. Ôn lại những câu sai để đạt điểm tối đa!";
     icon = "🌟";
+  } else if (score >= 60) {
+    title = "Khá tốt!";
+    message =
+      "Bạn đã hiểu được nhiều nội dung. Hãy xem lại phần giải thích để củng cố kiến thức.";
+    icon = "💪";
   }
 
   document.getElementById("resultTitle").textContent = title;
@@ -276,6 +429,7 @@ function showResults() {
   document.getElementById("resultIcon").textContent = icon;
 
   const reviewList = document.getElementById("reviewList");
+
   reviewList.innerHTML = "<h3>📖 Ôn tập sau trò chơi</h3>";
 
   history.forEach((item, i) => {
@@ -284,12 +438,15 @@ function showResults() {
     row.className = `review-item ${item.isCorrect ? "good" : "bad"}`;
 
     const heading = document.createElement("b");
+
     heading.textContent =
       `${item.isCorrect ? "✓" : "✗"} Câu ${i + 1}: ${item.question}`;
 
     const answer = document.createElement("div");
+
     answer.textContent =
-      `Đáp án đúng: ${"ABCD"[item.answer]}. ${questions[i].options[item.answer]}`;
+      `Đáp án đúng: ${"ABCD"[item.answer]}. ` +
+      `${questions[i].options[item.answer]}`;
 
     const explanation = document.createElement("div");
     explanation.textContent = item.explanation;
@@ -298,7 +455,10 @@ function showResults() {
     reviewList.appendChild(row);
   });
 
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 startButton.addEventListener("click", startGame);
